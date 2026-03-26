@@ -163,7 +163,7 @@ public class Principal7 {
 
         if (Files.isDirectory(p)) {
             try (Stream<Path> ficheros = Files.walk(p)) {
-                ficheros.filter(path -> path.getFileName().toString().startsWith(archivoABuscar))
+                ficheros.filter(path -> path.getFileName().toString().contains(archivoABuscar))
                         .forEach(path -> {
                             if (Files.isDirectory(path)) {
                                 System.out.printf("%s - directorio %n", path.getFileName());
