@@ -22,9 +22,9 @@ public class Ejercicio10 {
         if (Files.isRegularFile(fichero) && Files.isReadable(fichero)){
 
             Pattern p = Pattern.compile("^F\\s((?:\\w:\\/)?(?:\\w+\\/)*[\\d\\p{L}]{3,}\\.\\p{L}{3})$");
+             try (Stream<String> lineas = Files.lines(fichero)){
 
-            try (Stream<String> lineas = Files.lines(fichero)){
-                lineas.map(p::matcher).filter(Matcher::find)
+                 lineas.map(p::matcher).filter(Matcher::find)
                         //Coge el grupo 1 que es to do el parentesis, ya que con ?: digo que no lo coja
                         .map(m -> m.group(1))
                         .map(Path::of)
